@@ -1,5 +1,6 @@
 :root{
     --cellSize: 100px;
+    --backgroundColor: #ccc
 }
 
 *{
@@ -11,6 +12,7 @@
 
 body{
     height: 100vh;
+    background-color: var(--backgroundColor);
 }
 
 #container{
@@ -22,19 +24,18 @@ body{
 }
 
 #mainBoard{
-    border: 2px solid #000;
+    /* border: 2px solid #000; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
-    gap: 0.5rem
-    
+    gap: 0.5rem;
+    background-color: #000;    
 }
 
 .cell{
-    /* height: var(--cellSize);
-    width: var(--cellSize); */
     padding: 1rem 2rem;
     font-size: 4rem;
-    border: 2px solid #000;
-
+    /* border: 2px solid #000; */
+    cursor: pointer;
+    background-color: var(--backgroundColor);
 }
