@@ -5,10 +5,12 @@ function fillCell(char){
             if(!e.target.innerText){
                 e.target.innerText = char;
             
+                // Checking if any char win
+                checkCellsValue(char);
+
                 // Changing char to second player
                 char = char == "O" ? "X" : "O"
-    
-                console.log(char);
+
             }
         })
     })    
@@ -32,40 +34,49 @@ let winCombos = [
     [[1,3], [2,3], [3,3]]
 ];
 
-// Char "X" or "O"
+// Checking if two cells are the same
+function theSameCellsCheck(cell1, cell2){
+    for(let i = 0; i < 2; i++){
+        if(cell1[i] == cell2[i])
+            return false;
+    }
+
+    return true;
+}
+
+// Checking if any char is won
 function checkCellsValue(char){
+    console.log(char);
+    let cellNodes = document.querySelectorAll(".cell")
+    let cells = [];
+
     for(let i = 0; i < 9; i++){
         cellValue = cellNodes[i].innerText;
 
-        // Setting cells
-        cells[i] = new Cell(Math.floor(i/3)+1, (i%3)+1, cellValue, i);
-        console.log(cells[i]);
-            
-        // elem.innerHTML = "";
-        // elem.innerHTML = "X";
-    
-        // if(!elem.innerHTML){
-        //     console.log(elem);
-        //     console.log(i + " Empty");
-        // }
-        // else{
-        //     console.log(elem);
-        //     console.log(i + " Not empty")
-        // }
+        // Setting cells position
+        cells[i] = [Math.floor(i/3)+1, (i%3)+1, cellValue];
+
+        // Checking is win (if isWin = 3 char is WIN!)
+        let isWin = 0;
+        if(cellValue == char){
+
+            winCombos.forEach(combo => {
+                isWin = 0;
+
+                // Comparing a three cells
+                for(let j = 0; j < 3; j++){
+                    if(theSameCellsCheck(cells[i], combo[j]))
+                        console.log(++isWin);
+                    else
+                        console.log("-----")
+                }
+                // WORK IN PROGRESS...
+            })
+
+        }
+
     }
 }
-
-
-class Cell{
-    constructor(row, column, value, index) {
-        this.row = row;
-        this.column = column;
-        this.value = value;
-        this.index = index;
-    }
-}
-
-let cells = [];
 
 // console.log(cells[0]);
 // console.log(cellNodes);
