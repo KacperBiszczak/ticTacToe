@@ -1,7 +1,17 @@
-let cellNodes = document.querySelectorAll(".cell");
-
-function fillCell(){
-    cellNodes(0)
+function fillCell(char){
+    let cellNodes = document.querySelectorAll(".cell");
+    cellNodes.forEach(cell => {
+        cell.addEventListener("click", e => {
+            if(!e.target.innerText){
+                e.target.innerText = char;
+            
+                // Changing char to second player
+                char = char == "O" ? "X" : "O"
+    
+                console.log(char);
+            }
+        })
+    })    
 }
 
 let winCombos = [
@@ -60,4 +70,6 @@ let cells = [];
 // console.log(cells[0]);
 // console.log(cellNodes);
 
+// filling cell with "X" or "O" by click
+fillCell("O");
 // checkCellsValue();
