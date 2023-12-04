@@ -1,0 +1,40 @@
+:root{
+    --cellSize: 100px;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arimo', sans-serif;
+}
+
+body{
+    height: 100vh;
+}
+
+#container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mainBoard{
+    border: 2px solid #000;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: auto;
+    gap: 0.5rem
+    
+}
+
+.cell{
+    /* height: var(--cellSize);
+    width: var(--cellSize); */
+    padding: 1rem 2rem;
+    font-size: 4rem;
+    border: 2px solid #000;
+
+}
