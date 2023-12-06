@@ -6,7 +6,7 @@ function fillCell(char){
                 e.target.innerText = char;
             
                 // Checking if any char win
-                checkCellsValue(char);
+                checkGameStatus(char);
 
                 // Changing char to second player
                 char = char == "O" ? "X" : "O"
@@ -60,8 +60,11 @@ function checkGameStatus(char){
     }
 
     // Check if any char (player) is won
+    let isWin = 0;
     winCombos.forEach(combo => {
-        let isWin = 0;
+        if(isWin < 3){
+            isWin = 0;
+        }
 
         // Cells
         for(let i = 0; i < 9; i++){
@@ -77,11 +80,17 @@ function checkGameStatus(char){
             }   
         }
         
-        // If any char have win combo
-        if(isWin >=3)
-        console.log(isWin + " " + char);
     })
+    
+    // If any char have win combo
+    if(isWin >= 3)
+    console.log(isWin + " " + char);
 }
+
+// function startGame(){
+//     fillCell("O");
+//     // checkGameStatus();
+// }
 
 // console.log(cells[0]);
 // console.log(cellNodes);
