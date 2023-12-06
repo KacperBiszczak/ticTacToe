@@ -37,7 +37,7 @@ let winCombos = [
 // Checking if two cells are the same
 function theSameCellsCheck(cell1, cell2){
     for(let i = 0; i < 2; i++){
-        if(cell1[i] == cell2[i])
+        if(cell1[i] != cell2[i])
             return false;
     }
 
@@ -45,37 +45,42 @@ function theSameCellsCheck(cell1, cell2){
 }
 
 // Checking if any char is won
-function checkCellsValue(char){
-    console.log(char);
+function checkGameStatus(char){
+    
     let cellNodes = document.querySelectorAll(".cell")
     let cells = [];
 
+    // Setting cells position
     for(let i = 0; i < 9; i++){
-        cellValue = cellNodes[i].innerText;
+        let row = Math.floor(i/3)+1;
+        let column = (i%3)+1;
+        let cellValue = cellNodes[i].innerText;
 
-        // Setting cells position
-        cells[i] = [Math.floor(i/3)+1, (i%3)+1, cellValue];
-
-        // Checking is win (if isWin = 3 char is WIN!)
-        let isWin = 0;
-        if(cellValue == char){
-
-            winCombos.forEach(combo => {
-                isWin = 0;
-
-                // Comparing a three cells
-                for(let j = 0; j < 3; j++){
-                    if(theSameCellsCheck(cells[i], combo[j]))
-                        console.log(++isWin);
-                    else
-                        console.log("-----")
-                }
-                // WORK IN PROGRESS...
-            })
-
-        }
-
+        cells[i] = [row, column, cellValue];
     }
+
+    // Check if any char (player) is won
+    winCombos.forEach(combo => {
+        let isWin = 0;
+
+        // Cells
+        for(let i = 0; i < 9; i++){
+            
+            // Combos
+            for(let j = 0; j < 3; j++){
+
+                // Compare a cells with a combos
+                if(cells[i][2] == char){
+                    if(theSameCellsCheck(cells[i], combo[j])) isWin++;
+                }
+
+            }   
+        }
+        
+        // If any char have win combo
+        if(isWin >=3)
+        console.log(isWin + " " + char);
+    })
 }
 
 // console.log(cells[0]);
@@ -83,4 +88,3 @@ function checkCellsValue(char){
 
 // filling cell with "X" or "O" by click
 fillCell("O");
-// checkCellsValue();
