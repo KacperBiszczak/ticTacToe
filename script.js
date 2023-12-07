@@ -84,6 +84,8 @@ function checkGameStatus(char){
     // If any char have win combo
     if(isWin >= 3){
         console.log(`Player ${char} has won!`);
+        document.querySelector("#winMessage").innerHTML = `Player ${char} has won!`;
+        document.querySelector(".winScreen").classList.remove("hidden");
     }
 }
 
@@ -95,10 +97,11 @@ function resetCells(){
     })
 }
 
-function startGame(){
+function resetGame(){
+    document.querySelector(".winScreen").classList.add("hidden");
     resetCells();
     fillCell("O");
 }
 
-startGame();
+resetGame();
 

@@ -13,6 +13,10 @@
 <body>
 
     <div id="container">
+        <div id="title">
+            Tic Tac Toe
+        </div>
+
         <div id="mainBoard">
             <!-- Row 1 -->
             <div class="cell"></div>
@@ -29,6 +33,12 @@
             <div class="cell"></div>
             <div class="cell"></div>
         </div>
+    </div>
+
+    <!-- Pop up after win  -->
+    <div class="winScreen hidden">
+        <div id="winMessage">Player X has won!</div>
+        <button class="btn" onclick="resetGame()">New game</button>
     </div>
 
     <script src="script.js"></script>
