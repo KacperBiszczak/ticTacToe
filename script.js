@@ -82,11 +82,12 @@ function checkGameStatus(char){
     })
 
     // If any char have win combo
-    if(isWin >= 3)
-    console.log(`Player ${char} has won!`);
+    if(isWin >= 3){
+        console.log(`Player ${char} has won!`);
+    }
 }
 
-function emptyTheCells(){
+function resetCells(){
     let cellNodes = document.querySelectorAll(".cell");
 
     cellNodes.forEach(cell => {
@@ -95,10 +96,9 @@ function emptyTheCells(){
 }
 
 function startGame(){
+    resetCells();
     fillCell("O");
-    checkGameStatus();
 }
 
-emptyTheCells();
-// startGame();
+startGame();
 
