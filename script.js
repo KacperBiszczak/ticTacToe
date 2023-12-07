@@ -47,7 +47,7 @@ function theSameCellsCheck(cell1, cell2){
 // Checking if any char is won
 function checkGameStatus(char){
     
-    let cellNodes = document.querySelectorAll(".cell")
+    let cellNodes = document.querySelectorAll(".cell");
     let cells = [];
 
     // Setting cells position
@@ -83,7 +83,15 @@ function checkGameStatus(char){
 
     // If any char have win combo
     if(isWin >= 3)
-    console.log(isWin + " " + char);
+    console.log(`Player ${char} has won!`);
+}
+
+function emptyTheCells(){
+    let cellNodes = document.querySelectorAll(".cell");
+
+    cellNodes.forEach(cell => {
+        cell.innerText = "";
+    })
 }
 
 function startGame(){
@@ -91,4 +99,6 @@ function startGame(){
     checkGameStatus();
 }
 
-startGame();
+emptyTheCells();
+// startGame();
+
