@@ -88,6 +88,7 @@ function checkGameStatus(char){
         
     })
 
+    console.log(isWin, emptyCells);
     // If any char have won combo
     if(isWin >= 3){
         endGame(char, false);
