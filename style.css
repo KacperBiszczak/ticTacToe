@@ -1,9 +1,9 @@
 :root{
     --cellSize: 100px;
-    --primaryColor: #12372A;
-    --secondaryColor: #ADBC9F;
-    --thirdColor: #436850;
-    /* --fourthColor: #7E8EF1; */
+    --primaryColor: #5DEBD7; /* X and O */
+    --secondaryColor: #074173; /* background */
+    --thirdColor: #1679AB; /* hash # */
+    /* --fourthColor: #C5FF95; */
 }
 
 *{
