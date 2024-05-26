@@ -1,6 +1,9 @@
 :root{
     --cellSize: 100px;
-    --backgroundColor: #ccc
+    --primaryColor: #615EFC;
+    --secondaryColor: #EEEEEE;
+    --thirdColor: #D1D8C5;
+    --fourthColor: #7E8EF1;
 }
 
 *{
@@ -12,10 +15,10 @@
 
 body{
     height: 100vh;
-    background-color: var(--backgroundColor);
+    background-color: var(--secondaryColor);
 }
 
-#container{
+.container{
     height: 100%;
     width: 100%;
     display: flex;
@@ -24,13 +27,13 @@ body{
     align-items: center;
 }
 
-#title{
+.title{
     padding: 1rem;
     padding-bottom: 3rem;
     font-size: 2rem;
 }
 
-#mainBoard{
+.mainBoard{
     /* border: 2px solid #000; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -42,16 +45,13 @@ body{
 .cell{
     height: 100px;
     width: 100px;
-    padding: 1rem 2rem;
-    font-size: 4rem;
+    font-size: 5rem;
     /* border: 2px solid #000; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    background-color: var(--backgroundColor);
-    transition: .3s ease-out;
-}
-
-.cell:hover{
-    filter: brightness(.5);
+    background-color: var(--secondaryColor);
 }
 
 .winScreen{
