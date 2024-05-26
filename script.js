@@ -50,14 +50,21 @@ function checkGameStatus(char){
     let cellNodes = document.querySelectorAll(".cell");
     let cells = [];
 
+    let emptyCells = 0;
+
     // Setting cells position
     for(let i = 0; i < 9; i++){
         let row = Math.floor(i/3)+1;
         let column = (i%3)+1;
         let cellValue = cellNodes[i].innerText;
+    
+        // Counting empty cells
+        if(cellValue == ''){
+            emptyCells++;
+        }
 
         cells[i] = [row, column, cellValue];
-    }
+    }    
 
     // Check if any char (player) is won
     let isWin = 0;
@@ -81,12 +88,27 @@ function checkGameStatus(char){
         
     })
 
-    // If any char have win combo
+    // If any char have won combo
     if(isWin >= 3){
-        console.log(`Player ${char} has won!`);
-        document.querySelector("#winMessage").innerHTML = `Player ${char} has won!`;
-        document.querySelector(".winScreen").classList.remove("hidden");
+        endGame(char, false);
     }
+
+    // If noOne have won
+    if(emptyCells == 0)
+        endGame(char, true);
+
+
+}
+
+// Make a popup with info who won
+function endGame(char, isDraw = false){
+
+    if(isDraw)
+        document.querySelector("#winMessage").innerHTML = `It's draw!`;
+    else
+        document.querySelector("#winMessage").innerHTML = `Player ${char} has won!`;
+    
+    document.querySelector(".winScreen").classList.remove("hidden");
 }
 
 function resetCells(){
